@@ -36,7 +36,15 @@ import PyPDF2
 import pdfplumber
 import pytesseract
 from PIL import Image
-import cv2
+
+# OpenCV with graceful fallback
+try:
+    import cv2
+    CV2_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: OpenCV not available - {e}")
+    CV2_AVAILABLE = False
+    cv2 = None
 
 # Vector Database
 import chromadb
@@ -52,6 +60,12 @@ from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy import stats
+
+# Plotting (configure backend for headless deployment)
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Environment
 from dotenv import load_dotenv

@@ -41,8 +41,8 @@ reportlab>=4.0.0
 # Additional ML Libraries for Anomaly Detection
 pyod>=1.1.0
 
-# Image Processing for Fraud Detection
-opencv-python>=4.8.0
+# Image Processing for Fraud Detection (headless version)
+opencv-python-headless>=4.8.0
 
 # PDF to Image Conversion
 pdf2image>=1.16.0
