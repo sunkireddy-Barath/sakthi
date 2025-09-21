@@ -12,6 +12,15 @@ Author: AI Assistant
 Date: September 2025
 """
 
+# Configure matplotlib backend BEFORE any other imports
+import os
+os.environ['MPLBACKEND'] = 'Agg'
+import matplotlib
+matplotlib.use('Agg')
+
+# Set environment variable to prevent OpenGL issues
+os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -25,13 +34,30 @@ from datetime import datetime, timedelta
 from io import BytesIO
 import base64
 
-# Import our backend modules
+# Import our backend modules with detailed error handling
 try:
+    # First test individual imports
+    import backend
+    st.write("✅ Backend module imported successfully")
+    
     from backend import invoice_processor
+    st.write("✅ Invoice processor imported successfully")
+    
     from file_watcher import invoice_watcher
+    st.write("✅ File watcher imported successfully")
+    
 except ImportError as e:
-    st.error(f"Failed to import backend modules: {e}")
-    st.stop()
+    st.error(f"❌ Failed to import backend modules: {e}")
+    st.error("This might be due to missing system dependencies. Check the deployment logs.")
+    
+    # Show what we can about the error
+    import traceback
+    st.code(traceback.format_exc())
+    
+    # Create a dummy processor for testing
+    st.warning("⚠️ Running in fallback mode - some features may not work")
+    invoice_processor = None
+    invoice_watcher = None
 
 # Page configuration
 st.set_page_config(

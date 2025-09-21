@@ -1,0 +1,27 @@
+# Minimal requirements for deployment troubleshooting
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# PDF Processing
+PyPDF2>=3.0.0
+pdfplumber>=0.9.0
+Pillow>=10.0.0
+
+# File Monitoring
+watchdog>=3.0.0
+
+# Vector Database
+chromadb>=0.4.0
+
+# LLM Integration
+openai>=1.0.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Logging
+loguru>=0.7.0
+
+# Basic plotting without problematic dependencies
+plotly>=5.17.0
