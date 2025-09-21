@@ -72,8 +72,8 @@ exports/*.xlsx
 exports/*.json
 exports/*.pdf
 
-# Streamlit
-.streamlit/
+# Streamlit (allow config, ignore secrets)
+.streamlit/secrets.toml
 
 # Jupyter Notebook
 .ipynb_checkpoints
