@@ -46,13 +46,38 @@ except ImportError as e:
     CV2_AVAILABLE = False
     cv2 = None
 
-# Vector Database
-import chromadb
-from chromadb.config import Settings
+# Vector Database with graceful fallback
+try:
+    import chromadb
+    from chromadb.config import Settings
+    CHROMADB_AVAILABLE = True
+    print("✅ ChromaDB imported successfully")
+except Exception as e:
+    print(f"⚠️ ChromaDB not available: {e}")
+    CHROMADB_AVAILABLE = False
+    chromadb = None
+    Settings = None
 
-# LLM Integration
-from openai import OpenAI
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+# LLM Integration with graceful fallback
+try:
+    from openai import OpenAI
+    OPENAI_AVAILABLE = True
+    print("✅ OpenAI imported successfully")
+except Exception as e:
+    print(f"⚠️ OpenAI not available: {e}")
+    OPENAI_AVAILABLE = False
+    OpenAI = None
+
+try:
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    from langchain.schema import Document
+    LANGCHAIN_AVAILABLE = True
+    print("✅ LangChain imported successfully")
+except Exception as e:
+    print(f"⚠️ LangChain not available: {e}")
+    LANGCHAIN_AVAILABLE = False
+    RecursiveCharacterTextSplitter = None
+    Document = None
 from langchain.schema import Document
 
 # Machine Learning
@@ -204,6 +229,12 @@ class InvoiceProcessor:
     
     def setup_chromadb(self):
         """Initialize ChromaDB for vector storage and RAG"""
+        if not CHROMADB_AVAILABLE:
+            logger.warning("ChromaDB not available - RAG features will be disabled")
+            self.chroma_client = None
+            self.collection = None
+            return
+            
         try:
             # Ensure ChromaDB directory exists
             os.makedirs(self.chroma_db_path, exist_ok=True)
@@ -223,6 +254,8 @@ class InvoiceProcessor:
             logger.info("ChromaDB initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize ChromaDB: {e}")
+            self.chroma_client = None
+            self.collection = None
             self.collection = None
     
     def setup_ml_models(self):
