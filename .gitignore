@@ -1,0 +1,105 @@
+# .gitignore for Automated Invoice Compliance Tracker
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+invoice_tracker_env/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB
+data/chroma_db/
+
+# Processed files (keep structure but not contents)
+processed_invoices/approved/*.pdf
+processed_invoices/flagged/*.pdf
+processed_invoices/pending/*.pdf
+processed_invoices/error/*.pdf
+
+# Sample invoices (optional - keep for demo)
+# incoming_invoices/*.pdf
+
+# Exports
+exports/*.csv
+exports/*.xlsx
+exports/*.json
+exports/*.pdf
+
+# Streamlit
+.streamlit/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# System files
+*.pid
+*.lock
+
+# API Keys and secrets
+secrets.json
+credentials.json
+
+# Model files (if you save trained models)
+models/
+*.pkl
+*.joblib

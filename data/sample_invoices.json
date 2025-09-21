@@ -1,0 +1,312 @@
+[
+  {
+    "invoice_id": "INV-2024001",
+    "vendor_name": "Tech Solutions Inc",
+    "total_amount": 115169.98,
+    "currency": "INR",
+    "po_number": "PO-78480",
+    "due_date": "2025-10-04",
+    "invoice_date": "2025-09-04",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 2,
+        "rate": 3961.03,
+        "amount": 7922.06
+      },
+      {
+        "description": "Product B",
+        "quantity": 6,
+        "rate": 4956.75,
+        "amount": 29740.49
+      },
+      {
+        "description": "Product C",
+        "quantity": 18,
+        "rate": 2255.05,
+        "amount": 40590.93
+      },
+      {
+        "description": "Product D",
+        "quantity": 2,
+        "rate": 2270.76,
+        "amount": 4541.52
+      },
+      {
+        "description": "Product E",
+        "quantity": 4,
+        "rate": 3701.67,
+        "amount": 14806.68
+      }
+    ],
+    "tax_amount": 17568.3,
+    "net_amount": 97601.68
+  },
+  {
+    "invoice_id": "INV-2024002",
+    "vendor_name": "ABC Pvt Ltd",
+    "total_amount": 134130.55,
+    "currency": "INR",
+    "po_number": null,
+    "due_date": "2025-09-28",
+    "invoice_date": "2025-08-29",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 19,
+        "rate": 1918.87,
+        "amount": 36458.46
+      },
+      {
+        "description": "Product B",
+        "quantity": 18,
+        "rate": 1535.98,
+        "amount": 27647.65
+      },
+      {
+        "description": "Product C",
+        "quantity": 8,
+        "rate": 1714.19,
+        "amount": 13713.54
+      },
+      {
+        "description": "Product D",
+        "quantity": 15,
+        "rate": 2390.02,
+        "amount": 35850.32
+      }
+    ],
+    "tax_amount": 20460.59,
+    "net_amount": 113669.96
+  },
+  {
+    "invoice_id": "INV-2024003",
+    "vendor_name": "ABC Pvt Ltd",
+    "total_amount": 100885.59,
+    "currency": "INR",
+    "po_number": null,
+    "due_date": "2025-10-05",
+    "invoice_date": "2025-09-05",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 11,
+        "rate": 3691.97,
+        "amount": 40611.64
+      },
+      {
+        "description": "Product B",
+        "quantity": 5,
+        "rate": 2649.14,
+        "amount": 13245.7
+      },
+      {
+        "description": "Product C",
+        "quantity": 19,
+        "rate": 1543.64,
+        "amount": 29329.13
+      },
+      {
+        "description": "Product D",
+        "quantity": 3,
+        "rate": 769.93,
+        "amount": 2309.79
+      }
+    ],
+    "tax_amount": 15389.33,
+    "net_amount": 85496.26
+  },
+  {
+    "invoice_id": "INV-2024004",
+    "vendor_name": "Metro Services Ltd",
+    "total_amount": 48828.95,
+    "currency": "INR",
+    "po_number": "PO-42497",
+    "due_date": "2025-10-18",
+    "invoice_date": "2025-09-18",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 7,
+        "rate": 2260.32,
+        "amount": 15822.27
+      },
+      {
+        "description": "Product B",
+        "quantity": 9,
+        "rate": 2839.8,
+        "amount": 25558.2
+      }
+    ],
+    "tax_amount": 7448.48,
+    "net_amount": 41380.47
+  },
+  {
+    "invoice_id": "INV-2024005",
+    "vendor_name": "ABC Pvt Ltd",
+    "total_amount": 137125.17,
+    "currency": "INR",
+    "po_number": null,
+    "due_date": "2025-10-06",
+    "invoice_date": "2025-09-06",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 15,
+        "rate": 2609.52,
+        "amount": 39142.87
+      },
+      {
+        "description": "Product B",
+        "quantity": 7,
+        "rate": 1259.91,
+        "amount": 8819.38
+      },
+      {
+        "description": "Product C",
+        "quantity": 16,
+        "rate": 1692.04,
+        "amount": 27072.69
+      },
+      {
+        "description": "Product D",
+        "quantity": 20,
+        "rate": 2058.64,
+        "amount": 41172.83
+      }
+    ],
+    "tax_amount": 20917.4,
+    "net_amount": 116207.77
+  },
+  {
+    "invoice_id": "INV-2024006",
+    "vendor_name": "ABC Pvt Ltd",
+    "total_amount": 20841.21,
+    "currency": "INR",
+    "po_number": "PO-40296",
+    "due_date": "2025-09-25",
+    "invoice_date": "2025-08-26",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 19,
+        "rate": 454.63,
+        "amount": 8638.01
+      },
+      {
+        "description": "Product B",
+        "quantity": 2,
+        "rate": 2890.62,
+        "amount": 5781.23
+      },
+      {
+        "description": "Product C",
+        "quantity": 1,
+        "rate": 3242.8,
+        "amount": 3242.8
+      }
+    ],
+    "tax_amount": 3179.17,
+    "net_amount": 17662.04
+  },
+  {
+    "invoice_id": "INV-2024007",
+    "vendor_name": "XYZ Logistics",
+    "total_amount": 41101.88,
+    "currency": "INR",
+    "po_number": "PO-67835",
+    "due_date": "2025-10-18",
+    "invoice_date": "2025-09-18",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 10,
+        "rate": 2163.46,
+        "amount": 21634.65
+      },
+      {
+        "description": "Product B",
+        "quantity": 15,
+        "rate": 879.83,
+        "amount": 13197.46
+      }
+    ],
+    "tax_amount": 6269.78,
+    "net_amount": 34832.1
+  },
+  {
+    "invoice_id": "INV-2024008",
+    "vendor_name": "Metro Services Ltd",
+    "total_amount": 94853.04,
+    "currency": "INR",
+    "po_number": "PO-42118",
+    "due_date": "2025-09-11",
+    "invoice_date": "2025-08-12",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 16,
+        "rate": 3923.67,
+        "amount": 62778.69
+      },
+      {
+        "description": "Product B",
+        "quantity": 16,
+        "rate": 1100.33,
+        "amount": 17605.24
+      }
+    ],
+    "tax_amount": 14469.11,
+    "net_amount": 80383.93
+  },
+  {
+    "invoice_id": "INV-2024009",
+    "vendor_name": "XYZ Logistics",
+    "total_amount": 73947.87,
+    "currency": "INR",
+    "po_number": "PO-75346",
+    "due_date": "2025-09-28",
+    "invoice_date": "2025-08-29",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 13,
+        "rate": 2781.04,
+        "amount": 36153.51
+      },
+      {
+        "description": "Product B",
+        "quantity": 13,
+        "rate": 2039.55,
+        "amount": 26514.18
+      }
+    ],
+    "tax_amount": 11280.18,
+    "net_amount": 62667.69
+  },
+  {
+    "invoice_id": "INV-2024010",
+    "vendor_name": "Metro Services Ltd",
+    "total_amount": 100263.74,
+    "currency": "INR",
+    "po_number": "PO-43175",
+    "due_date": "2025-09-10",
+    "invoice_date": "2025-08-11",
+    "line_items": [
+      {
+        "description": "Product A",
+        "quantity": 9,
+        "rate": 4736.55,
+        "amount": 42628.93
+      },
+      {
+        "description": "Product B",
+        "quantity": 16,
+        "rate": 2646.27,
+        "amount": 42340.33
+      }
+    ],
+    "tax_amount": 15294.47,
+    "net_amount": 84969.27
+  }
+]
