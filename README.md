@@ -16,7 +16,7 @@ A comprehensive **AI-powered invoice processing and compliance system** built wi
 - **🛡️ Fraud Detection**: Multi-signal fraud detection (text patterns, amounts, vendor analysis)
 - **📧 Email Notifications**: Automatic alerts for flagged invoices
 - **💬 AI Chat Interface**: Natural language querying of invoice data
-- **📈 Real-time Dashboard**: Live metrics, charts, and analytics
+- **📈 Real-time Dashboard**: Live metrics, visualizations, and analytics
 - **📤 Export & Reporting**: CSV, Excel, JSON exports with filtering
 
 ### Technical Highlights
@@ -154,7 +154,7 @@ Invoices are flagged when any rule fails, with detailed reasons provided.
 
 **📈 Dashboard Tab:**
 - Key metrics (total, approved, flagged invoices)
-- Interactive charts and visualizations
+- Interactive visualizations and analytics
 - Processing timeline and vendor analysis
 
 **📄 Invoice Details Tab:**

@@ -8,7 +8,7 @@ This is the main web interface that provides:
 - Export and reporting functionality
 - File upload and manual processing
 
-Author: AI Assistant
+Author: Development Team
 Date: September 2025
 """
 
@@ -38,16 +38,13 @@ import base64
 try:
     # First test individual imports
     import backend
-    st.write("✅ Backend module imported successfully")
     
     from backend import invoice_processor
-    st.write("✅ Invoice processor imported successfully")
     
     from file_watcher import invoice_watcher
-    st.write("✅ File watcher imported successfully")
     
 except ImportError as e:
-    st.error(f"❌ Failed to import backend modules: {e}")
+    st.error(f"Failed to import backend modules: {e}")
     st.error("This might be due to missing system dependencies. Check the deployment logs.")
     
     # Show what we can about the error
@@ -55,7 +52,7 @@ except ImportError as e:
     st.code(traceback.format_exc())
     
     # Create a dummy processor for testing
-    st.warning("⚠️ Running in fallback mode - some features may not work")
+    st.warning("Running in fallback mode - some features may not work")
     invoice_processor = None
     invoice_watcher = None
 
@@ -172,27 +169,27 @@ def get_status_color(status):
 
 def render_header():
     """Render the main header and navigation"""
-    st.markdown('<h1 class="main-header">📊 Automated Invoice Compliance Tracker</h1>', 
+    st.markdown('<h1 class="main-header">Automated Invoice Compliance Tracker</h1>', 
                 unsafe_allow_html=True)
     
     # Add subtitle and description
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
-        <h3 style="color: #666; font-weight: normal;">🤖 AI-Powered Invoice Processing & Compliance Management System</h3>
+        <h3 style="color: #666; font-weight: normal;">Smart Invoice Processing & Compliance Management System</h3>
         <p style="color: #888; font-size: 1.1rem;">
             Streamline your invoice workflow with intelligent automation, real-time compliance checking, 
-            and advanced analytics powered by GPT-4 and machine learning.
+            and advanced analytics powered by modern technology.
         </p>
     </div>
     """, unsafe_allow_html=True)
     
     # Add navigation tabs
-    tabs = st.tabs(["📈 Dashboard", "📄 Invoice Details", "💬 AI Chat", "⚙️ Settings", "📤 Export"])
+    tabs = st.tabs(["Dashboard", "Invoice Details", "Smart Chat", "Settings", "Export"])
     return tabs
 
 def render_sidebar():
     """Render the sidebar with controls and metrics"""
-    st.sidebar.header("🎛️ Controls")
+    st.sidebar.header("Controls")
     
     # Auto-refresh toggle
     auto_refresh = st.sidebar.checkbox(
@@ -203,22 +200,22 @@ def render_sidebar():
     st.session_state.auto_refresh = auto_refresh
     
     # Manual refresh button
-    if st.sidebar.button("🔄 Refresh Now"):
+    if st.sidebar.button("Refresh Now"):
         load_invoice_data()
         st.rerun()
     
     # System status section
-    st.sidebar.subheader("🟢 System Status")
+    st.sidebar.subheader("System Status")
     
     # Database status
     try:
-        db_status = "✅ Connected" if invoice_processor else "❌ Error"
+        db_status = "Connected" if invoice_processor else "Error"
     except:
-        db_status = "❌ Error"
+        db_status = "Error"
     st.sidebar.write(f"**Database:** {db_status}")
     
     # File watcher status
-    st.sidebar.subheader("📁 File Watcher Status")
+    st.sidebar.subheader("File Processing Status")
     try:
         queue_status = invoice_watcher.get_queue_status()
         st.sidebar.metric("Files in Queue", queue_status['queue_length'])
@@ -231,7 +228,7 @@ def render_sidebar():
         st.sidebar.error(f"Watcher status unavailable: {e}")
     
     # Status filter
-    st.sidebar.subheader("🔍 Filters")
+    st.sidebar.subheader("Filters")
     status_options = ["All", "approved", "flagged", "pending", "error"]
     selected_status = st.sidebar.selectbox(
         "Filter by Status",
@@ -254,11 +251,11 @@ def render_metrics_dashboard(df):
     if df.empty:
         # Welcome section with project information
         st.markdown("""
-        ## 🎉 Welcome to the Automated Invoice Compliance Tracker!
+        ## Welcome to the Automated Invoice Compliance Tracker!
         
-        ### 🚀 AI-Powered Invoice Processing System
+        ### Smart Invoice Processing System
         
-        This cutting-edge application leverages **artificial intelligence** and **machine learning** to revolutionize your invoice management workflow.
+        This advanced application leverages modern technology to streamline your invoice management workflow.
         """)
         
         # Feature highlights
@@ -266,16 +263,16 @@ def render_metrics_dashboard(df):
         
         with col1:
             st.markdown("""
-            ### 🤖 AI Features
-            - **GPT-4 Powered Extraction**
+            ### Smart Features
+            - **Intelligent Data Extraction**
             - Smart PDF Processing
             - Natural Language Chat
-            - Intelligent Compliance
+            - Automated Compliance
             """)
         
         with col2:
             st.markdown("""
-            ### 📊 Analytics
+            ### Analytics
             - Real-time Dashboards
             - Compliance Scoring
             - Fraud Detection
@@ -284,38 +281,38 @@ def render_metrics_dashboard(df):
         
         with col3:
             st.markdown("""
-            ### ⚡ Automation
+            ### Automation
             - Auto File Monitoring
             - Instant Processing
             - Email Notifications
-            - ChromaDB Search
+            - Smart Search
             """)
         
         st.markdown("---")
         
         # Quick start guide
         st.markdown("""
-        ### 🎯 Quick Start Guide
+        ### Quick Start Guide
         
-        1. **📁 Upload Invoices**: Drop PDF files into the `incoming_invoices/` folder
-        2. **⚡ Auto Processing**: Watch AI extract data in real-time
-        3. **💬 Chat Interface**: Ask questions about your invoices
-        4. **📈 View Analytics**: Monitor compliance and performance
-        5. **📤 Export Reports**: Download insights and data
+        1. **Upload Invoices**: Drop PDF files into the `incoming_invoices/` folder
+        2. **Auto Processing**: Watch the system extract data in real-time
+        3. **Chat Interface**: Ask questions about your invoices
+        4. **View Analytics**: Monitor compliance and performance
+        5. **Export Reports**: Download insights and data
         """)
         
         # Sample data generation
-        st.markdown("### 🎮 Try it Now!")
+        st.markdown("### Try it Now!")
         
         col_demo1, col_demo2 = st.columns(2)
         
         with col_demo1:
-            if st.button("🔄 Generate Sample Data", type="primary"):
+            if st.button("Generate Sample Data", type="primary", key="generate_sample_data"):
                 with st.spinner("Generating sample invoices..."):
                     try:
                         from utils import create_sample_invoices
                         create_sample_invoices(5)
-                        st.success("✅ Generated 5 sample invoices! Refresh to see them.")
+                        st.success("Generated 5 sample invoices! Refresh to see them.")
                         time.sleep(2)
                         st.rerun()
                     except Exception as e:
@@ -323,7 +320,7 @@ def render_metrics_dashboard(df):
         
         with col_demo2:
             st.markdown("""
-            **📋 Sample Features:**
+            **Sample Features:**
             - Realistic invoice data
             - Various compliance scenarios
             - Multiple vendor types
@@ -332,42 +329,42 @@ def render_metrics_dashboard(df):
         
         # Technology stack
         st.markdown("---")
-        st.markdown("### 🛠️ Technology Stack")
+        st.markdown("### Technology Stack")
         
         tech_col1, tech_col2, tech_col3, tech_col4 = st.columns(4)
         
         with tech_col1:
             st.markdown("""
-            **🐍 Backend**
+            **Backend**
             - Python 3.9+
-            - OpenAI GPT-4
-            - Scikit-learn
+            - Smart Data Processing
+            - Machine Learning
             - SQLite
             """)
         
         with tech_col2:
             st.markdown("""
-            **🌐 Frontend**
+            **Frontend**
             - Streamlit
-            - Plotly Charts
+            - Interactive Visualizations
             - Responsive UI
             - Real-time Updates
             """)
         
         with tech_col3:
             st.markdown("""
-            **🗄️ Database**
-            - ChromaDB Vector Store
+            **Database**
+            - Vector Store
             - SQLite RDBMS
-            - RAG System
+            - Smart Search System
             - Semantic Search
             """)
         
         with tech_col4:
             st.markdown("""
-            **🚀 Deployment**
+            **Deployment**
             - Docker Ready
-            - Heroku Config
+            - Cloud Config
             - Auto Scaling
             - CI/CD Pipeline
             """)
@@ -382,43 +379,43 @@ def render_metrics_dashboard(df):
     
     with col1:
         st.metric(
-            label="📄 Total Invoices",
+            label="Total Invoices",
             value=metrics.get('total_invoices', 0)
         )
     
     with col2:
         st.metric(
-            label="✅ Approved",
+            label="Approved",
             value=metrics.get('approved_count', 0),
             delta=f"{(metrics.get('approved_count', 0) / max(metrics.get('total_invoices', 1), 1) * 100):.1f}%"
         )
     
     with col3:
         st.metric(
-            label="🚩 Flagged",
+            label="Flagged",
             value=metrics.get('flagged_count', 0),
             delta=f"{(metrics.get('flagged_count', 0) / max(metrics.get('total_invoices', 1), 1) * 100):.1f}%"
         )
     
     with col4:
         st.metric(
-            label="💰 Total Amount",
+            label="Total Amount",
             value=format_currency(metrics.get('total_amount', 0))
         )
     
-    # Charts section
-    st.subheader("📊 Analytics")
+    # Analytics section
+    st.subheader("Analytics")
     
-    chart_col1, chart_col2 = st.columns(2)
+    analytics_col1, analytics_col2 = st.columns(2)
     
-    with chart_col1:
-        # Status distribution pie chart
+    with analytics_col1:
+        # Invoice status overview
         if not df.empty:
             status_counts = df['status'].value_counts()
             fig_pie = px.pie(
                 values=status_counts.values,
                 names=status_counts.index,
-                title="Invoice Status Distribution",
+                title="Invoice Status Overview",
                 color_discrete_map={
                     'approved': '#28a745',
                     'flagged': '#dc3545',
@@ -428,13 +425,13 @@ def render_metrics_dashboard(df):
             )
             st.plotly_chart(fig_pie, width='stretch')
     
-    with chart_col2:
-        # Compliance score distribution
+    with analytics_col2:
+        # Compliance score analysis
         if not df.empty and 'compliance_score' in df.columns:
             fig_hist = px.histogram(
                 df,
                 x='compliance_score',
-                title="Compliance Score Distribution",
+                title="Compliance Score Analysis",
                 nbins=20,
                 color_discrete_sequence=['#1f77b4']
             )
@@ -444,9 +441,9 @@ def render_metrics_dashboard(df):
             )
             st.plotly_chart(fig_hist, width='stretch')
     
-    # Time series chart
+    # Processing timeline
     if not df.empty and 'processed_at' in df.columns:
-        st.subheader("📈 Processing Timeline")
+        st.subheader("Processing Timeline")
         
         # Convert processed_at to datetime
         df_time = df.copy()
@@ -460,7 +457,7 @@ def render_metrics_dashboard(df):
             x='processed_date',
             y='count',
             color='status',
-            title="Daily Invoice Processing",
+            title="Daily Invoice Processing Activity",
             color_discrete_map={
                 'approved': '#28a745',
                 'flagged': '#dc3545',
@@ -470,9 +467,9 @@ def render_metrics_dashboard(df):
         )
         st.plotly_chart(fig_timeline, width='stretch')
     
-    # Top vendors chart
+    # Top vendors analysis
     if not df.empty:
-        st.subheader("🏢 Top Vendors")
+        st.subheader("Top Vendors")
         vendor_data = df.groupby('vendor_name').agg({
             'total_amount': 'sum',
             'invoice_id': 'count'
@@ -484,7 +481,7 @@ def render_metrics_dashboard(df):
             vendor_data,
             x='Vendor',
             y='Total Amount',
-            title="Top 10 Vendors by Amount",
+            title="Top 10 Vendors by Total Amount",
             color='Invoice Count',
             color_continuous_scale='Blues'
         )
@@ -493,7 +490,7 @@ def render_metrics_dashboard(df):
 
 def render_invoice_table(df, status_filter):
     """Render the detailed invoice table"""
-    st.subheader("📋 Invoice Details")
+    st.subheader("Invoice Details")
     
     if df.empty:
         st.info("No invoices to display.")
@@ -543,11 +540,11 @@ def render_invoice_table(df, status_filter):
     )
     
     # Show detailed view for selected invoice
-    st.subheader("🔍 Invoice Details")
+    st.subheader("Invoice Details")
     
     if not df_filtered.empty:
         invoice_ids = df_filtered['invoice_id'].tolist()
-        selected_invoice = st.selectbox("Select Invoice for Details", ["None"] + invoice_ids)
+        selected_invoice = st.selectbox("Select Invoice for Details", ["None"] + invoice_ids, key="select_invoice_details")
         
         if selected_invoice != "None":
             invoice_details = df_filtered[df_filtered['invoice_id'] == selected_invoice].iloc[0]
@@ -595,16 +592,17 @@ def render_invoice_table(df, status_filter):
                     st.write("Line items could not be displayed")
 
 def render_chat_interface():
-    """Render the AI chat interface for querying invoice data"""
-    st.subheader("💬 AI Assistant - Ask about your invoices")
+    """Render the smart chat interface for querying invoice data"""
+    st.subheader("Smart Assistant - Ask about your invoices")
     
     # Chat input
     user_question = st.text_input(
         "Ask a question about your invoices:",
-        placeholder="e.g., Why was invoice INV-001 flagged? or Show me all invoices from ABC Pvt Ltd"
+        placeholder="e.g., Why was invoice INV-001 flagged? or Show me all invoices from ABC Pvt Ltd",
+        key="chat_input_question"
     )
     
-    if st.button("Send") and user_question:
+    if st.button("Send", key="send_chat_message") and user_question:
         # Add user message to chat history
         st.session_state.chat_history.append({
             'type': 'user',
@@ -612,15 +610,15 @@ def render_chat_interface():
             'timestamp': datetime.now()
         })
         
-        # Get AI response
+        # Get smart response
         with st.spinner("Thinking..."):
             try:
-                ai_response = invoice_processor.answer_question_with_rag(user_question)
+                smart_response = invoice_processor.answer_question_with_rag(user_question)
                 
-                # Add AI response to chat history
+                # Add smart response to chat history
                 st.session_state.chat_history.append({
                     'type': 'assistant',
-                    'message': ai_response,
+                    'message': smart_response,
                     'timestamp': datetime.now()
                 })
                 
@@ -646,11 +644,11 @@ def render_chat_interface():
                 if chat['type'] == 'user':
                     st.write(f"**You** ({timestamp}): {chat['message']}")
                 else:
-                    st.write(f"**AI Assistant** ({timestamp}): {chat['message']}")
+                    st.write(f"**Smart Assistant** ({timestamp}): {chat['message']}")
                 st.write("---")
     
     # Clear chat button
-    if st.button("Clear Chat History"):
+    if st.button("Clear Chat History", key="clear_chat_history_main"):
         st.session_state.chat_history = []
         st.rerun()
     
@@ -672,10 +670,10 @@ def render_chat_interface():
 
 def render_settings():
     """Render the settings and configuration page"""
-    st.subheader("⚙️ Settings & Configuration")
+    st.subheader("Settings & Configuration")
     
     # File upload section
-    st.write("**📁 Manual Invoice Upload**")
+    st.write("**Manual Invoice Upload**")
     uploaded_files = st.file_uploader(
         "Upload PDF invoices",
         type=['pdf'],
@@ -684,7 +682,7 @@ def render_settings():
     )
     
     if uploaded_files:
-        if st.button("Process Uploaded Files"):
+        if st.button("Process Uploaded Files", key="process_uploaded_files"):
             progress_bar = st.progress(0)
             status_text = st.empty()
             
@@ -701,12 +699,12 @@ def render_settings():
                     invoice_data, compliance_result = invoice_processor.process_invoice(temp_path)
                     
                     if invoice_data:
-                        st.success(f"✅ Processed {uploaded_file.name} - Status: {compliance_result.status}")
+                        st.success(f"Processed {uploaded_file.name} - Status: {compliance_result.status}")
                     else:
-                        st.error(f"❌ Failed to process {uploaded_file.name}")
+                        st.error(f"Failed to process {uploaded_file.name}")
                         
                 except Exception as e:
-                    st.error(f"❌ Error processing {uploaded_file.name}: {e}")
+                    st.error(f"Error processing {uploaded_file.name}: {e}")
                 
                 progress_bar.progress((i + 1) / len(uploaded_files))
             
@@ -716,7 +714,7 @@ def render_settings():
             load_invoice_data()
     
     # Configuration section
-    st.write("**🔧 Configuration**")
+    st.write("**Configuration**")
     
     col1, col2 = st.columns(2)
     
@@ -730,50 +728,50 @@ def render_settings():
         try:
             # Check database connection
             test_df = invoice_processor.get_all_invoices()
-            st.success("✅ Database Connected")
+            st.success("Database Connected")
         except:
-            st.error("❌ Database Connection Failed")
+            st.error("Database Connection Failed")
         
         # Check ChromaDB
         try:
             if invoice_processor.collection:
-                st.success("✅ ChromaDB Connected")
+                st.success("Vector Database Connected")
             else:
-                st.warning("⚠️ ChromaDB Not Available")
+                st.warning("Vector Database Not Available")
         except:
-            st.error("❌ ChromaDB Connection Failed")
+            st.error("Vector Database Connection Failed")
     
     # Data management
-    st.write("**🗄️ Data Management**")
+    st.write("**Data Management**")
     
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if st.button("🔄 Reload All Data"):
+        if st.button("Reload All Data", key="reload_data_settings"):
             load_invoice_data()
             st.success("Data reloaded successfully!")
     
     with col2:
-        if st.button("🧹 Clear Chat History"):
+        if st.button("Clear Chat History", key="clear_chat_history_settings"):
             st.session_state.chat_history = []
             st.success("Chat history cleared!")
     
     with col3:
-        if st.button("⚠️ Reset Database", type="secondary"):
-            if st.checkbox("I understand this will delete all data"):
+        if st.button("Reset Database", type="secondary", key="reset_database_settings"):
+            if st.checkbox("I understand this will delete all data", key="confirm_reset_database"):
                 # This would be dangerous in production
                 st.warning("This feature is disabled for safety")
 
 def render_export_page(df=None):
     """Render the export and reporting page"""
-    st.subheader("📤 Export & Reports")
+    st.subheader("Export & Reports")
     
     # Use provided dataframe or load from session state
     if df is None:
         df = st.session_state.invoices_df
     
     # Export options
-    st.write("**📊 Data Export**")
+    st.write("**Data Export**")
     
     col1, col2 = st.columns(2)
     
@@ -797,10 +795,11 @@ def render_export_page(df=None):
         include_details = st.checkbox(
             "Include detailed information",
             value=True,
+            key="export_include_details",
             help="Include line items, extracted text, and other detailed data"
         )
     
-    if st.button("📥 Export Data"):
+    if st.button("Export Data", key="export_data_button"):
         try:
             with st.spinner("Preparing export..."):
                 # Get filtered data
@@ -851,7 +850,7 @@ def render_export_page(df=None):
                                 mime="application/json"
                             )
                         
-                        st.success(f"✅ Exported {len(df)} invoices")
+                        st.success(f"Exported {len(df)} invoices")
                 else:
                     st.warning("No data available for export")
                     
@@ -859,14 +858,14 @@ def render_export_page(df=None):
             st.error(f"Export failed: {e}")
     
     # Report generation
-    st.write("**📈 Reports**")
+    st.write("**Reports**")
     
     report_type = st.selectbox(
         "Report Type",
         ["Compliance Summary", "Vendor Analysis", "Fraud Detection Summary", "Processing Timeline"]
     )
     
-    if st.button("📋 Generate Report"):
+    if st.button("Generate Report", key="generate_report_button"):
         try:
             df = st.session_state.invoices_df
             
@@ -965,7 +964,7 @@ def main():
                 load_invoice_data()
         render_invoice_table(st.session_state.invoices_df, status_filter)
     
-    with tabs[2]:  # AI Chat
+    with tabs[2]:  # Smart Chat
         render_chat_interface()
     
     with tabs[3]:  # Settings

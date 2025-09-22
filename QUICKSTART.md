@@ -24,7 +24,7 @@ python run.py
 ## ⚡ Instant Demo
 
 1. **The app starts with sample invoices already generated**
-2. **Dashboard shows real-time metrics and charts**
+2. **Dashboard shows real-time metrics and visualizations**
 3. **Try the AI chat: "Why was invoice INV-001 flagged?"**
 4. **Upload new PDFs in the Settings tab**
 
@@ -32,7 +32,7 @@ python run.py
 
 ### 📊 Dashboard
 - **Live metrics** (total, approved, flagged invoices)
-- **Interactive charts** (status distribution, timeline)
+- **Interactive visualizations** (status overview, timeline)
 - **Vendor analysis** with amounts and compliance scores
 
 ### 🤖 AI-Powered Processing

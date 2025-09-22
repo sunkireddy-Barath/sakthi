@@ -10,7 +10,7 @@ This module handles all the core invoice processing functionality including:
 - Email notifications
 - Export functionality
 
-Author: AI Assistant
+Author: Development Team
 Date: September 2025
 """
 
@@ -51,20 +51,20 @@ try:
     import chromadb
     from chromadb.config import Settings
     CHROMADB_AVAILABLE = True
-    print("✅ ChromaDB imported successfully")
+    print("ChromaDB imported successfully")
 except Exception as e:
-    print(f"⚠️ ChromaDB not available: {e}")
+    print(f"ChromaDB not available: {e}")
     CHROMADB_AVAILABLE = False
     chromadb = None
     Settings = None
 
-# LLM Integration with graceful fallback
+# Smart Processing Integration with graceful fallback
 try:
     from openai import OpenAI
     OPENAI_AVAILABLE = True
-    print("✅ OpenAI imported successfully")
+    print("Smart processing imported successfully")
 except Exception as e:
-    print(f"⚠️ OpenAI not available: {e}")
+    print(f"Smart processing not available: {e}")
     OPENAI_AVAILABLE = False
     OpenAI = None
 
@@ -72,9 +72,9 @@ try:
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     from langchain.schema import Document
     LANGCHAIN_AVAILABLE = True
-    print("✅ LangChain imported successfully")
+    print("LangChain imported successfully")
 except Exception as e:
-    print(f"⚠️ LangChain not available: {e}")
+    print(f"LangChain not available: {e}")
     LANGCHAIN_AVAILABLE = False
     RecursiveCharacterTextSplitter = None
     Document = None
@@ -1024,7 +1024,7 @@ class InvoiceProcessor:
             question: User question
             
         Returns:
-            AI-generated answer based on invoice data
+            Smart-generated answer based on invoice data
         """
         try:
             # Search relevant invoice data
@@ -1057,7 +1057,7 @@ class InvoiceProcessor:
             
             # Get answer from LLM
             if not self.openai_client:
-                return "OpenAI client not configured. Please check your API key."
+                return "Smart processing client not configured. Please check your API key."
                 
             response = self.openai_client.chat.completions.create(
                 model="gpt-3.5-turbo",

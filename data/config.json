@@ -1,0 +1,11 @@
+{
+  "max_amount": 50000,
+  "approved_vendors": [
+    "ABC Pvt Ltd",
+    "XYZ Logistics"
+  ],
+  "currency": "INR",
+  "tax_rate": 0.18,
+  "default_payment_terms": 30,
+  "initialized_at": "2025-09-22T08:41:40.949149"
+}
